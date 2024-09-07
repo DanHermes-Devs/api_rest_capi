@@ -33,30 +33,30 @@ class ContactRepository
         })->with(['phones', 'emails', 'addresses'])->paginate($perPage);
     }
 
-    public function create(array $data)
+    public function create($data)
     {
         $contact = Contact::create([
-            'name' => $data['name'],
-            'notes' => $data['notes'],
-            'birthday' => $data['birthday'],
-            'website' => $data['website'],
-            'company' => $data['company']
+            'name' => $data->name,
+            'notes' => $data->notes,
+            'birthday' => $data->birthday,
+            'website' => $data->website,
+            'company' => $data->company
         ]);
 
-        if (isset($data['phones']) && !empty($data['phones'])) {
-            foreach ($data['phones'] as $phone) {
-                $contact->phones()->create(['number' => $phone['number']]);
+        if (isset($data->phones) && !empty($data->phones)) {
+            foreach ($data->phones as $phone) {
+                $contact->phones()->create(['phone_number' => $phone['phone_number']]);
             }
         }
 
-        if (isset($data['emails']) && !empty($data['emails'])) {
-            foreach ($data['emails'] as $email) {
+        if (isset($data->emails) && !empty($data->emails)) {
+            foreach ($data->emails as $email) {
                 $contact->emails()->create(['email' => $email['email']]);
             }
         }
 
-        if (isset($data['addresses']) && !empty($data['addresses'])) {
-            foreach ($data['addresses'] as $address) {
+        if (isset($data->addresses) && !empty($data->addresses)) {
+            foreach ($data->addresses as $address) {
                 $contact->addresses()->create([
                     'address_line' => $address['address_line'],
                     'city' => $address['city'],

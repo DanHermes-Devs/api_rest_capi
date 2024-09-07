@@ -23,7 +23,7 @@ class ContactService
         return $this->contactRepository->filterByGeneral($term, $perPage);
     }
 
-    public function createContact(array $data)
+    public function createContact($data)
     {
         return $this->contactRepository->create($data);
     }
