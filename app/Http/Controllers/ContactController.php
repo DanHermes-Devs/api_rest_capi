@@ -17,21 +17,20 @@ class ContactController extends Controller
 
     public function index(Request $request)
     {
-        $perPage = $request->get('per_page', 15);
+        $perPage = $request->get('per_page', 10);
         return response()->json($this->contactService->getAllContactsWithDetails($perPage));
     }
 
     public function filterByGeneral(Request $request)
     {
         $term = $request->input('term');
-        $perPage = $request->get('per_page', 15);
+        $perPage = $request->get('per_page', 10);
         return response()->json($this->contactService->filterContactsByGeneral($term, $perPage));
     }
 
     public function store(ContactRequest $request)
     {
-        $data = $request->validated();
-        return response()->json($this->contactService->createContact($data), 201);
+        return response()->json($this->contactService->createContact($request), 201);
     }
 
     public function update($id, ContactRequest $request)

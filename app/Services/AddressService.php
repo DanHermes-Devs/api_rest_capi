@@ -13,6 +13,11 @@ class AddressService
         $this->addressRepository = $addressRepository;
     }
 
+    public function getAllAddressesByContactId($contactId)
+    {
+        return $this->addressRepository->getAllAddressesByContactId($contactId);
+    }
+
     public function createAddress($data)
     {
         return $this->addressRepository->create($data);

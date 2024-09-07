@@ -6,6 +6,11 @@ use App\Models\Address;
 
 class AddressRepository
 {
+    public function getAllAddressesByContactId($contactId)
+    {
+        return Address::where('contact_id', $contactId)->get();
+    }
+
     public function create($data)
     {
         return Address::create($data);

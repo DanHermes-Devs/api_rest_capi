@@ -17,6 +17,11 @@ class AddressController extends Controller
         $this->addressService = $addressService;
     }
 
+    public function getAllAddressesByContactId($contactId)
+    {
+        return response()->json($this->addressService->getAllAddressesByContactId($contactId));
+    }
+
     public function createAddress(AddressRequest $request)
     {
         $this->addressService->createAddress($request->all());
