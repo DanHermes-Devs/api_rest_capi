@@ -6,6 +6,11 @@ use App\Models\Email;
 
 class EmailRepository
 {
+    public function getAllEmailsByContactId($contactId)
+    {
+        return Email::where('contact_id', $contactId)->get();
+    }
+
     public function create($data)
     {
         return Email::create($data);

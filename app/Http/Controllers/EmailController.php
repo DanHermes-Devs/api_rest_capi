@@ -15,6 +15,11 @@ class EmailController extends Controller
         $this->emailService = $emailService;
     }
 
+    public function getAllEmailsByContactId($contactId)
+    {
+        return response()->json($this->emailService->getAllEmailsByContactId($contactId));
+    }
+
     public function createEmail(EmailRequest $request)
     {
         $this->emailService->createEmail($request->all());

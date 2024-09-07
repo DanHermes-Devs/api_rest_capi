@@ -13,6 +13,11 @@ class EmailService
         $this->emailRepository = $emailRepository;
     }
 
+    public function getAllEmailsByContactId($contactId)
+    {
+        return $this->emailRepository->getAllEmailsByContactId($contactId);
+    }
+
     public function createEmail($data)
     {
         return $this->emailRepository->create($data);
