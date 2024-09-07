@@ -13,6 +13,11 @@ class PhoneService
         $this->phoneRepository = $phoneRepository;
     }
 
+    public function getAllPhonesByContactId($contactId)
+    {
+        return $this->phoneRepository->getAllPhonesByContactId($contactId);
+    }
+
     public function createPhone($data)
     {
         return $this->phoneRepository->create($data);

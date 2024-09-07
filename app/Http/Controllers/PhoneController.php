@@ -15,6 +15,11 @@ class PhoneController extends Controller
         $this->phoneService = $phoneService;
     }
 
+    public function getAllPhonesByContactId($contactId)
+    {
+        return response()->json($this->phoneService->getAllPhonesByContactId($contactId));
+    }
+
     public function createPhone(PhoneRequest $request)
     {
         $this->phoneService->createPhone($request->all());
